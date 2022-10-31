@@ -1,1 +1,3 @@
 just put where in the youtube series you're on so its easier to pick up progress
+
+Andy - finished video #2, video 3 is giving issues so I reverted back to where program still worked.

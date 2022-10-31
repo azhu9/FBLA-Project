@@ -16,5 +16,6 @@ class Main {
     window.setVisible(true);
 
     gamePanel.startGameThread(); //start game loop
+    System.out.println("Game Ran Sucessfully");
 }
 }

@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable{
   
   public GamePanel(){
     this.setPreferredSize(new Dimension(screenWidth, screenHeight)); //set screen width and height
-    this.setBackground(Color.black);
+    this.setBackground(Color.blue);
     this.setDoubleBuffered(true); //renders stuff off screen (faster)
     this.addKeyListener(keyH);
     this.setFocusable(true);
@@ -45,8 +45,6 @@ public class GamePanel extends JPanel implements Runnable{
     double delta = 0;
     long lastTime = System.nanoTime();
     long currentTime;
-    long timer = 0;
-    int drawCount = 0;
     
     while(gameThread != null){ //game loop, repeats until exit
       currentTime = System.nanoTime();
@@ -60,7 +58,6 @@ public class GamePanel extends JPanel implements Runnable{
 
         repaint(); //draw
         delta--;
-        drawCount++;
       }
 
     }
@@ -90,6 +87,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     g2.fillRect(playerX, playerY, tileSize, tileSize); //make a rectangle of tileSize x tileSize and (100,100)
 
-    g2.dispose(); //closes class, garbage despense
+    g2.dispose(); //closes class, garbage 
+
+    
   }
 }
