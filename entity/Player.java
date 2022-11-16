@@ -30,8 +30,8 @@ public class Player extends Entity{
     }
     public void getPlayerImage(){
       try{
-        forward1 = ImageIO.read(getClass().getResourceAsStream("./../res/player/Among1.png"));
-        forward2 = ImageIO.read(getClass().getResourceAsStream("./../res/player/Among2.png"));
+        forward1 = ImageIO.read(getClass().getResourceAsStream("./../res/player/down1.png"));
+        forward2 = ImageIO.read(getClass().getResourceAsStream("./../res/player/while_hero_1.png"));
 
       }catch(IOException e){
         e.printStackTrace();
@@ -39,6 +39,7 @@ public class Player extends Entity{
     }
 
     public void update(){
+      if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed){
         if(y < gp.screenHeight - gp.tileSize){
             if(keyH.downPressed == true){
               direction = "down";
@@ -63,22 +64,64 @@ public class Player extends Entity{
               direction = "left";
               x -= speed;
           } 
+          spriteCounter++;
+          if(spriteCounter > 10){
+            if(spriteNum == 1){
+              spriteNum = 2;
+            }
+            else if(spriteNum == 2){
+              spriteNum = 1;
+            }
+            spriteCounter = 0;
+          }
+
         }
+      }
     }
 
     public void draw(Graphics2D g2){
         // g2.setColor(Color.white); // sets color to white
 
         // g2.fillRect(x, y, gp.tileSize, gp.tileSize); //make a rectangle of tileSize x tileSize and (100,100)
-
         BufferedImage image = null;
 
         switch(direction){
-          case "forward":
+          case "up":
+          if(spriteNum == 1){
             image = forward1;
+          }
+          if(spriteNum == 2){
+            image = forward2;
+          }
+            break;
+          case "down":
+          if(spriteNum == 1){
+            image = forward1;
+          }
+          if(spriteNum == 2){
+            image = forward2;
+          }
+            break;
+          case "left":
+          if(spriteNum == 1){
+            image = forward1;
+          }
+          if(spriteNum == 2){
+            image = forward2;
+          }
+            break;
+          case "right":
+          if(spriteNum == 1){
+            image = forward1;
+          }
+          if(spriteNum == 2){
+            image = forward2;
+          }
             break;
         }
 
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+
     }
+    
 }
